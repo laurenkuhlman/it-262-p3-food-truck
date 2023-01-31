@@ -9,7 +9,7 @@ Hello Team.
 We're Group # for P3: Food Truck.  
   
 Action Items for each team member:  
- T > Send me the email you use on Google so I can invite you to edit the Project Document in Google Docs. You can also just go to the Google doc and click 'Request Edit Access'  
+ T > Send me the email you use on Google so I can invite you to edit the Project Document in Google Docs. You can also just go to the Google doc and click 'Request Edit Access'  https://docs.google.com/document/d/1GKWyPsT--tG3siRE2uKGhWeh2qbHHJQEIyAVH3KwoBg/edit?usp=sharing 
  T > Send me your GitHub handle so I can add you as a collaborator to the project  
  T > Go to the availability grid and select your availability for each day/time under your name so we can select a time to work together on this project https://docs.google.com/spreadsheets/d/1Yim7AWY7JVvzfBbU5nNq_WKDDuuXP2vE52l-ybdl_Ew/edit?usp=sharing  
   
