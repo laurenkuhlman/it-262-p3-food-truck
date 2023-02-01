@@ -3,7 +3,7 @@ My Tasks
  T > Change filename on Project Google Doc to include group #  
  T > Put names in availability grid  
  T > Change this README  
-  
+
 Hello Team.  
   
 We're Group # for P3: Food Truck.  
