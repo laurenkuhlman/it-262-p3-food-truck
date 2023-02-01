@@ -25,8 +25,9 @@ Here is a link to the GitHub repository: https://github.com/laurenkuhlman/it-262
 Here is a link to the Project Document in Google Docs: https://docs.google.com/document/d/1GKWyPsT--tG3siRE2uKGhWeh2qbHHJQEIyAVH3KwoBg/edit?usp=sharing  
   
 Here is my personal Zoom link we can use for scheduled collaborative sessions: https://us06web.zoom.us/j/4247696473  
-  
-  
+
+He went over this assignment early on on 2022 Jan 31. He will give us time to work on it together Thursday, Feb 2
+
 Important Notes:  
 The GitHub repository has main branch protection on so a pull request with 1 approval is required before merging.  
 The project document in Google docs is currently just a copy of Kyrrah's from class.  
