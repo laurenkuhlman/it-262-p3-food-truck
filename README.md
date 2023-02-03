@@ -1,10 +1,6 @@
-My Tasks  
- T > Put names in availability grid  
- T > Change this README  
-
 Hello Team.  
   
-We're Group # for P3: Food Truck.  
+We're Group 1 for P3: Food Truck.  
   
 Action Items for each team member:  
  T > Send me the email you use on Google so I can invite you to edit the Project Document in Google Docs. You can also just go to the Google doc and click 'Request Edit Access'  https://docs.google.com/document/d/1GKWyPsT--tG3siRE2uKGhWeh2qbHHJQEIyAVH3KwoBg/edit?usp=sharing 
