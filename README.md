@@ -38,3 +38,6 @@ Testing: Testing the code to be sure it succeeds in many conditions, including u
 Project Management: Making sure all items are completed on time, and no important pieces are missing  
 Application Design: Building the fundamental programmatic pages  
 Page/Data Architecture: Determine the  pages & data required for the app   
+
+Kyrrah's Sample Page: https://kyrrahnork.com/summer2017/itc250/dev/food_truck/index.php
+
