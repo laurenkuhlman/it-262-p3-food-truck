@@ -1,6 +1,4 @@
 My Tasks  
- T > Change filename on availability grid to include group #  
- T > Change filename on Project Google Doc to include group #  
  T > Put names in availability grid  
  T > Change this README  
 
