@@ -1,7 +1,7 @@
 <?php
-// foodTruckV0.php
+// foodTruckV1.php
 // IT262 Winter 2023 P3 Food Truck
-// Added basic form to sample code - Richard Trimble
+// Added more menu options and increased max quantity to 9 - Richard Trimble
 
 // HTML Form
 
@@ -12,6 +12,8 @@ echo '<form action="" method="POST">
 		<p><input type="radio" name="WaffleType" value="Belgium" />Belgium</p>
 		<p><input type="radio" name="WaffleType" value="American" />American</p>
 		<p><input type="radio" name="WaffleType" value="Hong Kong" />Hong Kong</p>
+		<p><input type="radio" name="WaffleType" value="Liege" />Liege</p>
+		<p><input type="radio" name="WaffleType" value="Stroopwafel" />Stroopwafel</p>
 	</fieldset>			
 	
 	<fieldset>
@@ -23,6 +25,7 @@ echo '<form action="" method="POST">
 		<p><input type="checkbox" name="FavoriteToppings[]" value="Fresh Strawberries" />Fresh Strawberries</p>
 		<p><input type="checkbox" name="FavoriteToppings[]" value="Fresh Blueberries" />Fresh Blueberries</p>
 		<p><input type="checkbox" name="FavoriteToppings[]" value="Whipped Cream" />Whipped Cream</p>
+		<p><input type="checkbox" name="FavoriteToppings[]" value="Vanilla Ice Cream" />Vanilla Ice Cream</p>
 	</fieldset>			
 
 	<fieldset>
@@ -32,6 +35,35 @@ echo '<form action="" method="POST">
 		  <option value="1">1</option>
 		  <option value="2">2</option>
 		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>
+		  <option value="9">9</option>
+		</select>	
+	</fieldset>			
+	
+	<fieldset>
+		<legend>Would you like a salad?</legend>
+		<p><input type="radio" name="Salad" value="Garden Fresh" />Garden Fresh $3.95</p>
+		<p><input type="radio" name="Salad" value="Chicken Caesar" />Chicken Caesar $5.95</p>
+		<p><input type="radio" name="Salad" value="Chef" />Chef $5.95</p>
+	</fieldset>			
+	
+	<fieldset>
+		<label for="sqty">How many of these would you like?</label>
+		<select id="sqty" name="SalQty">
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>
+		  <option value="9">9</option>
 		</select>	
 	</fieldset>			
 	
@@ -49,6 +81,12 @@ echo '<form action="" method="POST">
 		  <option value="1">1</option>
 		  <option value="2">2</option>
 		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>
+		  <option value="9">9</option>
 		</select>	
 	</fieldset>			
 	
@@ -91,10 +129,38 @@ if($_POST['WaffleQty'] > 1) { // Note if more than one is ordered
 	echo '<p>'.$_POST['WaffleQty'].' Waffles ordered at $'.sprintf("%.2f", $subtotal).'</p>';
 }
 
+if(isset($_POST['WaffleType'])) {
+	echo '----------------------------------------'; // LIKELY DELETE AFTER CSS ADDED
+}
+
+// Salad selection
+
+if(isset($_POST['Salad'])) {
+	if($_POST['Salad'] == "Garden Fresh") {
+		$myItem = new Item(2,$_POST['Salad'],$_POST['Salad'],3.95); // Only Garden Fresh is priced differently at $3.95
+		$saladPrice = 3.95;
+	} else {
+		$myItem = new Item(2,$_POST['Salad'],$_POST['Salad'],5.95); // Both remaining options are priced the same at $5.95
+		$saladPrice = 5.95;
+	}
+	$items[] = $myItem;
+	echo '<p>Salad: '.$_POST['Salad'].' at '.sprintf("%.2f", $saladPrice).' each</p>';
+}
+
+$saladSubtotal = $saladPrice * $_POST['SalQty'];
+if($_POST['SalQty'] > 1) { // Note if more than one is ordered
+	echo '<p>'.$_POST['SalQty'].' salads ordered at $'.sprintf("%.2f", $saladSubtotal).'</p>';
+}
+$subtotal = $subtotal + $saladSubtotal;
+
+if(isset($_POST['Salad'])) {
+	echo '----------------------------------------'; // LIKELY DELETE AFTER CSS ADDED
+}
+
 // Beverage selection
 
 if(isset($_POST['Beverage'])) {
-	$myItem = new Item(2,$_POST['Beverage'],$_POST['Beverage'],2.95);
+	$myItem = new Item(3,$_POST['Beverage'],$_POST['Beverage'],2.95);
 	$items[] = $myItem;
 	echo '<p>Beverage: '.$_POST['Beverage'].' at $2.95 each</p>';
 }
@@ -104,6 +170,10 @@ if($_POST['BevQty'] > 1) { // Note if more than one is ordered
 	echo '<p>'.$_POST['BevQty'].' beverages ordered at $'.sprintf("%.2f", $bevSubtotal).'</p>';
 }
 $subtotal = $subtotal + $bevSubtotal;
+
+if(isset($_POST['Beverage'])) {
+	echo '----------------------------------------'; // LIKELY DELETE AFTER CSS ADDED
+}
 
 echo '<p>Your subtotal is: $'.sprintf("%.2f", $subtotal).'</p>';
 
