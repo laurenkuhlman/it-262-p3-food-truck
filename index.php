@@ -28,6 +28,7 @@
         type="radio"
         name="WaffleType"
         value="American" 
+        <?php if(isset($_POST['WaffleType']) && $_POST['WaffleType'] == 'American' ) echo 'checked="checked" ';?>
       >American
     </p>
     <p>
@@ -35,6 +36,7 @@
         type="radio"
         name="WaffleType"
         value="Hong Kong" 
+        <?php if(isset($_POST['WaffleType']) && $_POST['WaffleType'] == 'Hong Kong' ) echo 'checked="checked" ';?>
       >Hong Kong
     </p>
     <p>
@@ -42,6 +44,7 @@
         type="radio"
         name="WaffleType"
         value="Liege" 
+        <?php if(isset($_POST['WaffleType']) && $_POST['WaffleType'] == 'Liege' ) echo 'checked="checked" ';?>
       >Liege
     </p>
     <p>
@@ -49,6 +52,7 @@
         type="radio"
         name="WaffleType"
         value="Stroopwafel" 
+        <?php if(isset($_POST['WaffleType']) && $_POST['WaffleType'] == 'Stroopwafel' ) echo 'checked="checked" ';?>
       >Stroopwafel</p>
   </fieldset>      
   
