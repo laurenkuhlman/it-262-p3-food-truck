@@ -165,15 +165,23 @@
 ?>
 <!DOCTYPE html>
 <html>
-  <head>
+  <head>  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://use.fontawesome.com/99304701cb.js"></script>
     <title>Food Truck Menu</title>
   </head>
   <body>
-    <h1>Welcome to the Food Truck!</h1>
+    <div class="wrapper">
+    <h1>Welcome to the Food Truck!</h1><i class="fa-solid fa-stroopwafel"></i>
     <p>Please choose your items below. You can choose to order more than one of each item.</p>
     <form action="" method="post">
       <?php
+        echo '<div class="form-wrapper">';
         foreach ($items as $item) {
+          echo '<div class="menu-item">';
           echo '<h3>' . $item->Name . '</h3><p>' . $item->Description . '</p><p>Price: $' . $item->Price . '</p>';
           echo '<label>Quantity: <input type="number" name="quantity[' . $item->ID . ']" value="'. (isset($quantity[$item->ID]) ? $quantity[$item->ID] : 0) . '"></label><br>';
           foreach($item->Extras as $extra => $price) {
@@ -185,54 +193,58 @@
              '>' . $extra . ' ($' . $price . ')
             </label><br>';
           }
-          echo '<br>';
+          echo '</div>';
         }
+        echo '</div>  <!-- END FORM WRAPPER -->';
       ?>
       <input type="submit" value="Order Now">
     </form>
-  </body>
-</html>
-<?php
-  if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if(isset($_POST['quantity'])) {
-      $quantity = $_POST['quantity'];
-      $total_qty = 0;
-      foreach($quantity as $qty){
-        $total_qty += $qty;
-      }
-      if($total_qty == 0){
-        echo '<p>Error: Choose a quantity.</p>';
-      } else {
-        $extras = $_POST['extras'];
-        $total = 0;
-        echo '<h2>Your Order is</h2>';
-        foreach ( $quantity as $id => $qty ) {
-          if ( is_numeric ( $qty ) && $qty > 0 ) {
-            $item = $items[$id - 1]; // accounting for zero indexing
-            echo '<strong>' . $item->Name . ' x ' . $qty . '</strong><br>';
-            $subtotal = number_format($qty * $item->Price, 2);
-            $extra_subtotal = 0;
-            if(isset($extras[$id])) {
-              foreach($extras[$id] as $extra) {
-                $extra_subtotal += $qty * $item->Extras[$extra];
-                echo 'Extra: ' . $extra . ' ($' . 
-                number_format($item->Extras[$extra], 2) . 
-                ')<br>';
+    <div class="order-total">
+    <?php
+      if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(isset($_POST['quantity'])) {
+          $quantity = $_POST['quantity'];
+          $total_qty = 0;
+          foreach($quantity as $qty){
+            $total_qty += $qty;
+          }
+          if($total_qty == 0){
+            echo '<p>Error: Choose a quantity.</p>';
+          } else {
+            $extras = $_POST['extras'];
+            $total = 0;
+            echo '<h2>Your Order is</h2>';
+            foreach ( $quantity as $id => $qty ) {
+              if ( is_numeric ( $qty ) && $qty > 0 ) {
+                $item = $items[$id - 1]; // accounting for zero indexing
+                echo '<strong>' . $item->Name . ' x ' . $qty . '</strong><br>';
+                $subtotal = number_format($qty * $item->Price, 2);
+                $extra_subtotal = 0;
+                if(isset($extras[$id])) {
+                  foreach($extras[$id] as $extra) {
+                    $extra_subtotal += $qty * $item->Extras[$extra];
+                    echo 'Extra: ' . $extra . ' ($' . 
+                    number_format($item->Extras[$extra], 2) . 
+                    ')<br>';
+                  }
+                }
+                $subtotal += $extra_subtotal;
+                echo 'Subtotal: $' . 
+                number_format($subtotal, 2) . 
+                '<br><br>';
+                $total += $subtotal;
               }
             }
-            $subtotal += $extra_subtotal;
-            echo 'Subtotal: $' . 
-            number_format($subtotal, 2) . 
-            '<br><br>';
-            $total += $subtotal;
+            echo '<p>Total: $' .
+            number_format($total, 2) .
+            '</p>';
           }
+        } else {
+          echo '<p>Error: Choose a quantity.</p>';
         }
-        echo '<p>Total: $' .
-        number_format($total, 2) .
-        '</p>';
       }
-    } else {
-      echo '<p>Error: Choose a quantity.</p>';
-    }
-  }
-?>
+    ?>
+    </div> <!-- END ORDER-TOTAL -->
+    </div> <!-- END WRAPPER -->
+  </body>
+</html>

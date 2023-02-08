@@ -1,0 +1,25 @@
+.wrapper {
+    text-align: center;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.menu-item {
+    width: 25%;
+    margin: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding-bottom: 15px;
+    border-radius: 2%;
+}
+
+.order-total {
+    text-align: center;
+}
