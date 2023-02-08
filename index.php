@@ -1,334 +1,116 @@
-<!--
-// index.php
-// IT262 Winter 2023 P3 Food Truck
-// Added more menu options and increased max quantity to 9 - Richard Trimble
-// changed file name to index.php - Lauren Kuhlman
-// changed tabs to 2 spaces - Lauren Kuhlman
-// lots of line indenting - Lauren Kuhlman
-// changed from echo-ing form to HTML form with PHP
-// added form memory - Lauren Kuhlman
--->
-
-<!DOCTYPE HTML>
-<html lang="en">
-<form action="" method="POST">
-  <p>What kind of waffle would you like? $5.95</p>
-  <fieldset>
-    <legend>Waffle Type:</legend>
-    <p>
-      <input
-        type="radio"
-        name="WaffleType"
-        value="Belgium" 
-        <?php if(isset($_POST['WaffleType']) && $_POST['WaffleType'] == 'Belgium' ) echo 'checked="checked" ';?>
-      >Belgium
-    </p>
-    <p>
-      <input
-        type="radio"
-        name="WaffleType"
-        value="American" 
-        <?php if(isset($_POST['WaffleType']) && $_POST['WaffleType'] == 'American' ) echo 'checked="checked" ';?>
-      >American
-    </p>
-    <p>
-      <input
-        type="radio"
-        name="WaffleType"
-        value="Hong Kong" 
-        <?php if(isset($_POST['WaffleType']) && $_POST['WaffleType'] == 'Hong Kong' ) echo 'checked="checked" ';?>
-      >Hong Kong
-    </p>
-    <p>
-      <input
-        type="radio"
-        name="WaffleType"
-        value="Liege" 
-        <?php if(isset($_POST['WaffleType']) && $_POST['WaffleType'] == 'Liege' ) echo 'checked="checked" ';?>
-      >Liege
-    </p>
-    <p>
-      <input
-        type="radio"
-        name="WaffleType"
-        value="Stroopwafel" 
-        <?php if(isset($_POST['WaffleType']) && $_POST['WaffleType'] == 'Stroopwafel' ) echo 'checked="checked" ';?>
-      >Stroopwafel</p>
-  </fieldset>      
-  
-  <fieldset>
-    <legend>Your favorite toppings: $0.99 each</legend>
-    <p>
-      <input
-        type="checkbox"
-        name="FavoriteToppings[]"
-        value="Warm Chocolate" 
-      >Warm Chocolate</p>
-    <p>
-      <input
-        type="checkbox"
-        name="FavoriteToppings[]"
-        value="Homemade Caramel" 
-      >Homemade Caramel</p>
-    <p>
-      <input
-        type="checkbox"
-        name="FavoriteToppings[]"
-        value="Nutella" 
-      >Nutella</p>
-    <p>
-      <input
-        type="checkbox"
-        name="FavoriteToppings[]"
-        value="Peanut Butter" 
-      >Peanut Butter</p>
-    <p>
-      <input
-        type="checkbox"
-        name="FavoriteToppings[]"
-        value="Fresh Strawberries" 
-      >Fresh Strawberries</p>
-    <p>
-      <input
-        type="checkbox"
-        name="FavoriteToppings[]"
-        value="Fresh Blueberries" 
-      >Fresh Blueberries</p>
-    <p>
-      <input
-        type="checkbox"
-        name="FavoriteToppings[]"
-        value="Whipped Cream" 
-      >Whipped Cream</p>
-    <p>
-      <input
-        type="checkbox"
-        name="FavoriteToppings[]"
-        value="Vanilla Ice Cream" 
-      >Vanilla Ice Cream</p>
-  </fieldset>      
-
-  <fieldset>
-    <label for="wqty">How many of these would you like?</label>
-    <select id="wqty"
-        name="WaffleQty">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-    </select>  
-  </fieldset>      
-  
-  <fieldset>
-    <legend>Would you like a salad?</legend>
-    <p>
-      <input
-        type="radio"
-        name="Salad"
-        value="Garden Fresh" 
-      >Garden Fresh $3.95</p>
-    <p>
-      <input
-        type="radio"
-        name="Salad"
-        value="Chicken Caesar" 
-      >Chicken Caesar $5.95</p>
-    <p>
-      <input
-        type="radio"
-        name="Salad"
-        value="Chef" 
-      >Chef $5.95</p>
-  </fieldset>      
-  
-  <fieldset>
-    <label for="sqty">How many of these would you like?</label>
-    <select id="sqty"
-        name="SalQty">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-    </select>  
-  </fieldset>      
-  
-  <fieldset>
-    <legend>Something to drink? $2.95</legend>
-    <p>
-      <input
-        type="radio"
-        name="Beverage"
-        value="Colombian Brewed Coffee" 
-      >Colombian Brewed Coffee</p>
-    <p>
-      <input
-        type="radio"
-        name="Beverage"
-        value="Our Special Punch" 
-      >Our Special Punch</p>
-    <p>
-      <input
-        type="radio"
-        name="Beverage"
-        value="Bottled Spring Water" 
-      >Bottled Spring Water</p>
-  </fieldset>      
-  
-  <fieldset>
-    <label for="bqty">How many of these would you like?</label>
-    <select id="bqty"
-        name="BevQty">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-    </select>  
-  </fieldset>      
-  
-  <p>
-      <input
-        type="submit" 
-      ></p>    
-</form>
-
 <?php
-// Load input items into class Item and display order total
+  //index.php
 
-$itemNumber = 1;
-$subtotal = 0;
-
-echo '<p>Your order is:</p>';
-
-// Waffle type selection
-
-if(isset($_POST['WaffleType'])) {
-  $myItem = new Item($itemNumber,$_POST['WaffleType'],$_POST['WaffleType'],5.95);
+  $myItem = new Item(1,"Waffles","Our waffles are not awful",5.95);
+  $myItem->addExtra("Warm Chocolate","1.00");
+  $myItem->addExtra("Homemade Caramel","1.50");
+  $myItem->addExtra("Nutella","1.25");
+  $myItem->addExtra("Peanut Butter","1.00");
+  $myItem->addExtra("Fresh Strawberries","1.50");
+  $myItem->addExtra("Fresh Blueberries","1.50");
+  $myItem->addExtra("Whipped Cream","1.25");
+  $myItem->addExtra("Vanilla Ice Cream","1.50");
   $items[] = $myItem;
-  $itemNumber++;
-  $subtotal = 5.95;
-  echo '<p>'.$_POST['WaffleType'].' Waffle $5.95</p>';
-}
 
-// Topping selection
-
-if(isset($_POST['FavoriteToppings'])) {
-  if(isset($_POST['WaffleType'])) {  // Only accept topping selections if waffle type is selected
-     foreach($_POST['FavoriteToppings'] as $value){
-        echo '<p>- with '.$value.' topping $0.95</p>';
-      $myItem->addExtra($value);
-      $subtotal = $subtotal + 0.95;
-    }
-   } else {
-    echo 'To get toppings, you have to select a waffle to put them on!';
-  }
-}
-echo '<p>Cost for one waffle is: $'.sprintf("%.2f", $subtotal).'</p>';
-if($_POST['WaffleQty'] > 1) { // Note if more than one is ordered
-  $subtotal = $subtotal * $_POST['WaffleQty'];
-  echo '<p>'.$_POST['WaffleQty'].' Waffles ordered at $'.sprintf("%.2f", $subtotal).'</p>';
-}
-
-if(isset($_POST['WaffleType'])) {
-  echo '----------------------------------------'; // LIKELY DELETE AFTER CSS ADDED
-}
-
-// Salad selection
-
-if(isset($_POST['Salad'])) {
-  if($_POST['Salad'] == "Garden Fresh") {
-    $myItem = new Item(2,$_POST['Salad'],$_POST['Salad'],3.95); // Only Garden Fresh is priced differently at $3.95
-    $saladPrice = 3.95;
-  } else {
-    $myItem = new Item(2,$_POST['Salad'],$_POST['Salad'],5.95); // Both remaining options are priced the same at $5.95
-    $saladPrice = 5.95;
-  }
+  $myItem = new Item(2,"Salad","Our salads are not waffles!",3.95);
+  $myItem->addExtra("Chicken","0.75");
+  $myItem->addExtra("Croutons","1.00");
+  $myItem->addExtra("Salmon","1.50");
   $items[] = $myItem;
-  echo '<p>Salad: '.$_POST['Salad'].' at '.sprintf("%.2f", $saladPrice).' each</p>';
-}
 
-$saladSubtotal = $saladPrice * $_POST['SalQty'];
-if($_POST['SalQty'] > 1) { // Note if more than one is ordered
-  echo '<p>'.$_POST['SalQty'].' salads ordered at $'.sprintf("%.2f", $saladSubtotal).'</p>';
-}
-$subtotal = $subtotal + $saladSubtotal;
-
-if(isset($_POST['Salad'])) {
-  echo '----------------------------------------'; // LIKELY DELETE AFTER CSS ADDED
-}
-
-// Beverage selection
-
-if(isset($_POST['Beverage'])) {
-  $myItem = new Item(3,$_POST['Beverage'],$_POST['Beverage'],2.95);
+  $myItem = new Item(3,"Coffee","Colombian Brewed",2.95);
+  $myItem->addExtra("Oat milk","0.75");
   $items[] = $myItem;
-  echo '<p>Beverage: '.$_POST['Beverage'].' at $2.95 each</p>';
-}
 
-$bevSubtotal = 2.95 * $_POST['BevQty'];
-if($_POST['BevQty'] > 1) { // Note if more than one is ordered
-  echo '<p>'.$_POST['BevQty'].' beverages ordered at $'.sprintf("%.2f", $bevSubtotal).'</p>';
-}
-$subtotal = $subtotal + $bevSubtotal;
-
-if(isset($_POST['Beverage'])) {
-  echo '----------------------------------------'; // LIKELY DELETE AFTER CSS ADDED
-}
-
-echo '<p>Your subtotal is: $'.sprintf("%.2f", $subtotal).'</p>';
-
-$tax = $subtotal * 0.1025;
-echo '<p>Tax at 10.25% is: $'.sprintf("%.2f", $tax).'</p>';
-$total = $subtotal + $tax;
-echo '<p>Your total is: $'.sprintf("%.2f", $total).'</p>';
-
-// FOR DEV INFO ONLY - DELETE IN FINAL vvvvvvvvvvvvvvv
-
-echo '<p>var dump for code dev info follows:</p>'; 
-echo '<pre>';
-var_dump($items);
-echo '</pre>';
-
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-class Item
-{
+  class Item
+  {
     public $ID = 0;
     public $Name = '';
     public $Description = '';
     public $Price = 0;
     public $Extras = array();
-    
+
     public function __construct($ID,$Name,$Description,$Price)
     {
-        $this->ID = $ID;
-        $this->Name = $Name;
-        $this->Description = $Description;
-        $this->Price = $Price;
-        
+      $this->ID = $ID;
+      $this->Name = $Name;
+      $this->Description = $Description;
+      $this->Price = $Price;
+
     }#end Item constructor
-    
-    public function addExtra($extra)
+
+    public function addExtra($extra,$price)
     {
-        $this->Extras[] = $extra;
-        
+      $this->Extras[$extra] = $price;
+
     }#end addExtra()
 
-}#end Item class
+  }#end Item class
+?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Food Truck Menu</title>
+  </head>
+  <body>
+    <h1>Welcome to the Food Truck!</h1>
+    <p>Please choose your items below. You can choose to order more than one of each item.</p>
+    <form action="" method="post">
+      <?php
+        foreach ($items as $item) {
+          echo '<h3>' . $item->Name . '</h3><p>' . $item->Description . '</p><p>Price: $' . $item->Price . '</p>';
+          echo '<label>Quantity: <input type="number" name="quantity[' . $item->ID . ']" value="'. (isset($quantity[$item->ID]) ? $quantity[$item->ID] : 0) . '"></label><br>';
+          foreach($item->Extras as $extra => $price) {
+            echo '<label>
+              <input
+              type="checkbox"
+              name="extras[' . $item->ID . '][]" 
+              value="' . $extra . '" '. 
+             '>' . $extra . ' ($' . $price . ')
+            </label><br>';
+          }
+          echo '<br>';
+        }
+      ?>
+      <input type="submit" value="Order Now">
+    </form>
+  </body>
+</html>
+<?php
+  if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if(isset($_POST['quantity'])) {
+      $quantity = $_POST['quantity'];
+      $total_qty = 0;
+      foreach($quantity as $qty){
+        $total_qty += $qty;
+      }
+      if($total_qty == 0){
+        echo '<p>Error: Choose a quantity.</p>';
+      } else {
+        $extras = $_POST['extras'];
+        $total = 0;
+        echo '<h2>Your Order is</h2>';
+        foreach ( $quantity as $id => $qty ) {
+          if ( is_numeric ( $qty ) && $qty > 0 ) {
+            $item = $items[$id - 1]; // accounting for zero indexing
+            echo '<strong>' . $item->Name . ' x ' . $qty . '</strong><br>';
+            $subtotal = $qty * $item->Price;
+            $extra_subtotal = 0;
+            if(isset($extras[$id])) {
+              foreach($extras[$id] as $extra) {
+                $extra_subtotal += $qty * $item->Extras[$extra];
+                echo 'Extra: ' . $extra . ' ($' . $item->Extras[$extra] . ')<br>';
+              }
+            }
+            $subtotal += $extra_subtotal;
+            echo 'Subtotal: $' . $subtotal . '<br><br>';
+            $total += $subtotal;
+          }
+        }
+        echo '<p>Total: $' . $total . '</p>';
+      }
+    } else {
+      echo '<p>Error: Choose a quantity.</p>';
+    }
+  }
+?>
