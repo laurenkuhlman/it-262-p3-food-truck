@@ -3,23 +3,23 @@
 
   $myItem = new Item(1,"Waffles","Our waffles are not awful",5.95);
   $myItem->addExtra("Warm Chocolate","1.00");
-  $myItem->addExtra("Homemade Caramel","1.50");
-  $myItem->addExtra("Nutella","1.25");
+  $myItem->addExtra("Homemade Caramel","1.00");
+  $myItem->addExtra("Nutella","1.00");
   $myItem->addExtra("Peanut Butter","1.00");
-  $myItem->addExtra("Fresh Strawberries","1.50");
-  $myItem->addExtra("Fresh Blueberries","1.50");
-  $myItem->addExtra("Whipped Cream","1.25");
-  $myItem->addExtra("Vanilla Ice Cream","1.50");
+  $myItem->addExtra("Fresh Strawberries","1.00");
+  $myItem->addExtra("Fresh Blueberries","1.00");
+  $myItem->addExtra("Whipped Cream","1.00");
+  $myItem->addExtra("Vanilla Ice Cream","1.00");
   $items[] = $myItem;
 
   $myItem = new Item(2,"Salad","Our salads are not waffles!",3.95);
-  $myItem->addExtra("Chicken","0.75");
+  $myItem->addExtra("Chicken","1.00");
   $myItem->addExtra("Croutons","1.00");
-  $myItem->addExtra("Salmon","1.50");
+  $myItem->addExtra("Salmon","1.00");
   $items[] = $myItem;
 
   $myItem = new Item(3,"Coffee","Colombian Brewed",2.95);
-  $myItem->addExtra("Oat milk","0.75");
+  $myItem->addExtra("Oat milk","1.00");
   $items[] = $myItem;
 
   class Item
@@ -94,20 +94,26 @@
           if ( is_numeric ( $qty ) && $qty > 0 ) {
             $item = $items[$id - 1]; // accounting for zero indexing
             echo '<strong>' . $item->Name . ' x ' . $qty . '</strong><br>';
-            $subtotal = $qty * $item->Price;
+            $subtotal = number_format($qty * $item->Price, 2);
             $extra_subtotal = 0;
             if(isset($extras[$id])) {
               foreach($extras[$id] as $extra) {
                 $extra_subtotal += $qty * $item->Extras[$extra];
-                echo 'Extra: ' . $extra . ' ($' . $item->Extras[$extra] . ')<br>';
+                echo 'Extra: ' . $extra . ' ($' . 
+                number_format($item->Extras[$extra], 2) . 
+                ')<br>';
               }
             }
             $subtotal += $extra_subtotal;
-            echo 'Subtotal: $' . $subtotal . '<br><br>';
+            echo 'Subtotal: $' . 
+            number_format($subtotal, 2) . 
+            '<br><br>';
             $total += $subtotal;
           }
         }
-        echo '<p>Total: $' . $total . '</p>';
+        echo '<p>Total: $' .
+        number_format($total, 2) .
+        '</p>';
       }
     } else {
       echo '<p>Error: Choose a quantity.</p>';
