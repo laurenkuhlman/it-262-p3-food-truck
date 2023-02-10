@@ -170,20 +170,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa+One&family=Pacifico&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/99304701cb.js"></script>
-    <title>Food Truck Menu</title>
+    <title>Waffle Wagon Menu</title>
   </head>
   <body>
     <div class="wrapper">
-    <h1>Welcome to the Food Truck!</h1><i class="fa-solid fa-stroopwafel"></i>
-    <p>Please choose your items below. You can choose to order more than one of each item.</p>
+    <h1>Welcome to Waffle Wagon!</h1>    <!-- <i class="fa-solid fa-stroopwafel"></i> -->
+    <h2>Please choose your items below. You can choose to order more than one of each item.</h2>
     <form action="" method="post">
       <?php
         echo '<div class="form-wrapper">';
         foreach ($items as $item) {
           echo '<div class="menu-item">';
           echo '<h3>' . $item->Name . '</h3><p>' . $item->Description . '</p><p>Price: $' . $item->Price . '</p>';
-          echo '<label>Quantity: <input type="number" name="quantity[' . $item->ID . ']" value="'. (isset($quantity[$item->ID]) ? $quantity[$item->ID] : 0) . '"></label><br>';
+          echo '<label>Quantity: <Select name="quantity[' . $item->ID . ']" value="'. (isset($quantity[$item->ID]) ? $quantity[$item->ID] : 0) . '"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></label><br>';
           foreach($item->Extras as $extra => $price) {
             echo '<label>
               <input
@@ -197,7 +200,7 @@
         }
         echo '</div>  <!-- END FORM WRAPPER -->';
       ?>
-      <input type="submit" value="Order Now">
+      <input class="submit-btn" type="submit" value="Order Now">
     </form>
     <div class="order-total">
     <?php
@@ -209,7 +212,7 @@
             $total_qty += $qty;
           }
           if($total_qty == 0){
-            echo '<p>Error: Choose a quantity.</p>';
+            echo '<p class="error">Error: Choose a quantity.</p>';
           } else {
             $extras = $_POST['extras'];
             $total = 0;
@@ -240,7 +243,7 @@
             '</p>';
           }
         } else {
-          echo '<p>Error: Choose a quantity.</p>';
+          echo '<p class="error">Error: Choose a quantity.</p>';
         }
       }
     ?>
