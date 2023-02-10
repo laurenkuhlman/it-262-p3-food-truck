@@ -235,7 +235,14 @@
                 echo 'Subtotal: $' . 
                 number_format($subtotal, 2) . 
                 '<br><br>';
+                
+                $tax = ( $subtotal * .075 );
+                echo 'Tax: $' . 
+                number_format($tax, 2) . 
+                '<br><br>';
+
                 $total += $subtotal;
+                $total += $tax;
               }
             }
             echo '<p>Total: $' .
